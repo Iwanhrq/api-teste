@@ -8,7 +8,7 @@ app.use(express.json());
 const neurotransmitters = [
   {
     id: 'serotonin',
-    name: 'teste ao vivo',
+    name: 'Serotonina',
     description: 'A serotonina é um neurotransmissor que desempenha um papel crucial na regulação do humor, sono, apetite e comportamento social. É frequentemente chamada de "hormônio da felicidade" devido à sua influência no bem-estar emocional.',
     functions: [
       'Regulação do humor e bem-estar',
