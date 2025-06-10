@@ -147,11 +147,83 @@ app.get('/neurotransmitters', (req, res) => {
 app.get('/neurotransmitters/:id', (req, res) => {
   const { id } = req.params;
   const neurotransmitter = neurotransmitters.find(n => n.id === id);
-  
+
   if (neurotransmitter) {
     res.json(neurotransmitter);
   } else {
     res.status(404).json({ error: 'Neurotransmissor não encontrado' });
+  }
+});
+
+
+const brainParts = [
+  {
+    id: 'cerebrum',
+    name: 'Cérebro',
+    description: 'O cérebro é a maior parte do sistema nervoso central e é responsável por funções como pensamento, memória, emoção, toque, habilidades motoras, visão, audição e linguagem.',
+    functions: [
+      'Processamento de informações sensoriais',
+      'Controle motor voluntário',
+      'Tomada de decisões',
+      'Memória e aprendizado',
+      'Regulação das emoções'
+    ],
+    relatedConditions: [
+      'Acidente vascular cerebral (AVC)',
+      'Doença de Alzheimer',
+      'Epilepsia',
+      'Traumatismo craniano'
+    ]
+  },
+  {
+    id: 'cerebellum',
+    name: 'Cerebelo',
+    description: 'O cerebelo é responsável pelo controle da coordenação motora, equilíbrio e postura.',
+    functions: [
+      'Coordenação dos movimentos',
+      'Equilíbrio corporal',
+      'Manutenção da postura',
+      'Aprimoramento dos movimentos finos'
+    ],
+    relatedConditions: [
+      'Ataxia',
+      'Lesões cerebelares',
+      'Doenças neurodegenerativas'
+    ]
+  },
+  {
+    id: 'brainstem',
+    name: 'Tronco encefálico',
+    description: 'O tronco encefálico conecta o cérebro à medula espinhal e controla funções automáticas vitais, como respiração e batimentos cardíacos.',
+    functions: [
+      'Controle da respiração',
+      'Regulação do batimento cardíaco',
+      'Controle da pressão arterial',
+      'Reflexos vitais',
+      'Transmissão de sinais entre cérebro e corpo'
+    ],
+    relatedConditions: [
+      'Lesões no tronco encefálico',
+      'Acidente vascular cerebral',
+      'Distúrbios respiratórios'
+    ]
+  }
+];
+
+// Rota para listar todas as partes do cérebro
+app.get('/brainparts', (req, res) => {
+  res.json(brainParts);
+});
+
+// Rota para buscar uma parte específica do cérebro
+app.get('/brainparts/:id', (req, res) => {
+  const { id } = req.params;
+  const brainPart = brainParts.find(bp => bp.id === id);
+
+  if (brainPart) {
+    res.json(brainPart);
+  } else {
+    res.status(404).json({ error: 'Parte do cérebro não encontrada' });
   }
 });
 
